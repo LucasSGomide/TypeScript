@@ -6,5 +6,4 @@
 -   Compiler
 -   ECMAScript Resources
 -   Classes
--   Modules
 -   Namespaces

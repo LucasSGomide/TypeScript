@@ -8,3 +8,4 @@
 -   Classes
 -   Namespaces
 -   Interfaces
+-   Generics

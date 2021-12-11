@@ -41,5 +41,49 @@ namespace Generics {
     const getGenericFunction: GenericFunction = <G>(data: G[]) =>
         data.forEach((element) => console.log(element))
 
-    getGenericFunction<number>(numberArr)
+    getGenericFunction<number>(numberArray)
+
+    // Classes with Generics
+
+    abstract class BinaryOperation<T, R> {
+        constructor(protected firstArg: T, protected secondArg: T) {}
+
+        abstract exec(): R
+    }
+
+    class BinarySum extends BinaryOperation<number, number> {
+        exec(): number {
+            return this.firstArg + this.secondArg
+        }
+    }
+
+    class BinaryConcat extends BinaryOperation<string, string> {
+        exec(): string {
+            return `${this.firstArg} ${this.secondArg}`
+        }
+    }
+
+    class BinaryDate extends BinaryOperation<Date, string> {
+        private getDayString(value: number): string {
+            return value === 1 ? 'dia' : 'dias'
+        }
+
+        private getDaysDiff(): number {
+            const firstTime = this.firstArg.getTime()
+            const secondTime = this.secondArg.getTime()
+            const daysDiff = (firstTime - secondTime) / (1000 * 3600 * 24)
+
+            return Math.abs(Math.floor(daysDiff))
+        }
+
+        exec(): string {
+            const daysDiff = this.getDaysDiff()
+            return `Diferença de: ${daysDiff} ${this.getDayString(daysDiff)}`
+        }
+    }
+
+    console.log(new BinaryConcat('Bom', 'Dia').exec())
+    console.log(new BinarySum(3, 7).exec())
+    console.log(new BinaryDate(new Date(), new Date('11-10-2021')).exec())
+    console.log(new BinaryDate(new Date(), new Date('12-10-2021')).exec())
 }

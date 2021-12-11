@@ -22,5 +22,41 @@ var Generics;
     console.log(handleGenericObject(numberArray));
     console.log(handleGenericObject(objectArray));
     const getGenericFunction = (data) => data.forEach((element) => console.log(element));
-    getGenericFunction(numberArr);
+    getGenericFunction(numberArray);
+    // Classes with Generics
+    class BinaryOperation {
+        constructor(firstArg, secondArg) {
+            this.firstArg = firstArg;
+            this.secondArg = secondArg;
+        }
+    }
+    class BinarySum extends BinaryOperation {
+        exec() {
+            return this.firstArg + this.secondArg;
+        }
+    }
+    class BinaryConcat extends BinaryOperation {
+        exec() {
+            return `${this.firstArg} ${this.secondArg}`;
+        }
+    }
+    class BinaryDate extends BinaryOperation {
+        getDayString(value) {
+            return value === 1 ? 'dia' : 'dias';
+        }
+        getDaysDiff() {
+            const firstTime = this.firstArg.getTime();
+            const secondTime = this.secondArg.getTime();
+            const daysDiff = (firstTime - secondTime) / (1000 * 3600 * 24);
+            return Math.abs(Math.floor(daysDiff));
+        }
+        exec() {
+            const daysDiff = this.getDaysDiff();
+            return `Diferença de: ${daysDiff} ${this.getDayString(daysDiff)}`;
+        }
+    }
+    console.log(new BinaryConcat('Bom', 'Dia').exec());
+    console.log(new BinarySum(3, 7).exec());
+    console.log(new BinaryDate(new Date(), new Date('11-10-2021')).exec());
+    console.log(new BinaryDate(new Date(), new Date('12-10-2021')).exec());
 })(Generics || (Generics = {}));

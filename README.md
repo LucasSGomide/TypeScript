@@ -7,3 +7,4 @@
 -   ECMAScript Resources
 -   Classes
 -   Namespaces
+-   Interfaces

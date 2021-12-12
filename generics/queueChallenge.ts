@@ -62,7 +62,12 @@ namespace GenericsChallenge {
         }
     }
 
-    const pacientSchedule = [
+    type Pacients = {
+        name: string
+        hour: number
+    }
+
+    const pacientSchedule: Pacients[] = [
         { name: 'Patrícia Santiago', hour: 8 },
         { name: 'Paulo Gomide', hour: 7 },
         { name: 'Lucas Gomide', hour: 4 },

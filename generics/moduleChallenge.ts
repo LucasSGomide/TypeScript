@@ -2,7 +2,7 @@ namespace GenericsModuleChallenge {
     type KeyValue<K, V> = { id: K; value: V }
 
     class Mapper<K, V> {
-        private currentMap: Array<KeyValue<K, V>> = []
+        private currentMap: Array<KeyValue<K, V>> = new Array<KeyValue<K, V>>()
 
         constructor() {}
 
@@ -67,7 +67,7 @@ namespace GenericsModuleChallenge {
         }
 
         deleteAll(): void {
-            this.currentMap = []
+            this.currentMap = new Array<KeyValue<K, V>>()
 
             console.log(
                 '<Status: 200> All registres were cleared: ',

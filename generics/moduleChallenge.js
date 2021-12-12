@@ -3,7 +3,7 @@ var GenericsModuleChallenge;
 (function (GenericsModuleChallenge) {
     class Mapper {
         constructor() {
-            this.currentMap = [];
+            this.currentMap = new Array();
         }
         findRegisterIndex(id) {
             const isFound = this.currentMap.find((item) => item.id === id);
@@ -48,7 +48,7 @@ var GenericsModuleChallenge;
             return;
         }
         deleteAll() {
-            this.currentMap = [];
+            this.currentMap = new Array();
             console.log('<Status: 200> All registres were cleared: ', this.currentMap);
             return;
         }
